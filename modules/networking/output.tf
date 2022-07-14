@@ -18,6 +18,10 @@ output "networkinterface2" {
   value = azurerm_network_interface.networkinterface2.id
 }
 
-output "publicip" {
-  value = azurerm_public_ip.vmpublicip.id
+output "publicip1" {
+  value = azurerm_public_ip.vmpublicip1.ip_address
+}
+
+output "publicip2" {
+  value = azurerm_public_ip.vmpublicip2.ip_address
 }

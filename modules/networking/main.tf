@@ -35,6 +35,7 @@ resource "azurerm_network_interface" "networkinterface1" {
     name                          = "${var.prefix}-ipconfig"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.vmpublicip1.id
   }
 }
 
@@ -49,13 +50,24 @@ resource "azurerm_network_interface" "networkinterface2" {
     name                          = "${var.prefix}-ipconfig"
     subnet_id                     = azurerm_subnet.subnet2.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.vmpublicip2.id
   }
 }
 
-# Creating Static Public IP
-resource "azurerm_public_ip" "vmpublicip" {
+# Creating Static Public IP for VM1
+resource "azurerm_public_ip" "vmpublicip1" {
   depends_on=[var.resourcename]
-  name                = "${var.prefix}-vm-ip"
+  name                = "${var.prefix}-vm-ip-1"
+  location            = var.environmentlocation
+  resource_group_name = var.environmentname
+  allocation_method   = "Static"
+}
+
+
+# Creating Static Public IP
+resource "azurerm_public_ip" "vmpublicip2" {
+  depends_on=[var.resourcename]
+  name                = "${var.prefix}-vm-ip-2"
   location            = var.environmentlocation
   resource_group_name = var.environmentname
   allocation_method   = "Static"

@@ -23,8 +23,8 @@ variable "resourcename" {
   description = "filled in module"
 }
 
-variable "ports" {
-    type = list(string)
-  description = "list of ports"
-  default     = ["3389", "80" ]
-}
+# variable "ports" {
+#     type = list(string)
+#   description = "list of ports"
+#   default     = ["3389", "80" ]
+# }

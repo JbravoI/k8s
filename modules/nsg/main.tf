@@ -39,7 +39,7 @@ resource "azurerm_network_security_group" "vm-nsg" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = var.ports
+    destination_port_range     = "3389"
     source_address_prefix      = "Internet"
     destination_address_prefix = "*"
   }
@@ -53,8 +53,8 @@ resource "azurerm_subnet_network_security_group_association" "nsgassociation1" {
 
 
 # Associate the NSG with the subnet2
-resource "azurerm_subnet_network_security_group_association" "nsgassociation1" {
+resource "azurerm_subnet_network_security_group_association" "nsgassociation2" {
   depends_on=[var.resourcename]
-  subnet_id                 = var.subnetid2
+  subnet_id                = var.subnetid2
   network_security_group_id = azurerm_network_security_group.vm-nsg.id
 }
