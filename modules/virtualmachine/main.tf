@@ -8,7 +8,7 @@ resource "azurerm_linux_virtual_machine" "virtualmachine1" {
   admin_username      = var.vm_username1
   admin_password      = var.vm_password
   network_interface_ids = [var.networkinterface1]
-  # disable_password_authentication = "false"
+  disable_password_authentication = "false"
   
 
   # admin_ssh_key {
@@ -40,12 +40,13 @@ resource "azurerm_linux_virtual_machine" "virtualmachine2" {
   admin_username      = var.vm_username2
   admin_password      = var.vm_password
   network_interface_ids = [var.networkinterface2]
-  # disable_password_authentication = "false"
+  disable_password_authentication = "false"
+  # dns_name = "Master"
   # public_ip_addresses    = 
 
   # admin_ssh_key {
   #   username   = "adminuser2"
-  #   public_key = file("../publickey.pub")
+  #   public_key = file("/home/mevirtual/.ssh/id_rsa.pub")
   # }
 
   os_disk {
